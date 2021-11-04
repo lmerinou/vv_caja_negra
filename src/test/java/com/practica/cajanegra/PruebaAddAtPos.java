@@ -4,6 +4,10 @@ import com.cajanegra.SingleLinkedListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -52,21 +56,31 @@ class AddAtPosTestEquivalencia {
     public void elemInvalidoSuperiorPosInvalidaTest() {
         myList.addAtPos("]", -6);
     }
+
+    @DisplayName("Test parameterizados clases equivalencia")
+    @ParameterizedTest
+    @CsvSource(value = {"A:5","C:-1","?:6", ">:-2","^:3","]:-6"}, delimiter = ':')
+    public void elementoTest(Object element, int p) {
+        myList.addAtPos(element, p);
+    }
+
 }
 
 class AddAtPosValorLimite{
+
     SingleLinkedListImpl<Object> myList;
 
     @BeforeEach
     void setUp() {
         myList = new SingleLinkedListImpl<>();
     }
-   /*** PROBAR PARAMETERIZEDTESTS PARA QUE QUEDE MÁS LIMPIO */
 
-    @DisplayName("Valores límite de elemento")
-    @Test
-    public void elementoTest() {
-        myList.addAtPos("A", 5);
+    @DisplayName("Test parameterizados valor límite")
+    @ParameterizedTest
+    @CsvSource(value = {"@:3","A:4","B:5", "L:6","Y:7","Z:8","[:9","C:0","D:1","E:2"}, delimiter = ':')
+    public void elementoTest(Object element, int p) {
+        myList.addAtPos(element, p);
     }
+
 
 }

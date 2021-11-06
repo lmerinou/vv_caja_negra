@@ -34,7 +34,10 @@ class PruebaAddNTimesTest {
     @Test
     public void seIntroducenElementosAlFinalTest() {
         myList.addNTimes("A", 5);
-        Assertions.assertFalse(myList.isEmpty());
+        int tamI = myList.size();
+        myList.addNTimes("B", 2);
+
+        Assertions.assertEquals(tamI + 1, myList.indexOf("B"));
     }
 
     @DisplayName("Se introducen elementos válidos con N válida")

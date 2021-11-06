@@ -15,13 +15,11 @@ class ProbarRemoveLastTest {
 
     SingleLinkedListImpl<Object> myList;
     String validElement = "^[A-Z]+$";
-    Iterator<Object> primerElemLista;
 
 
     @BeforeEach
     void setUp() {
         myList = new SingleLinkedListImpl<>();
-        primerElemLista = myList.iterator();
     }
     //METODO PARA COMPROBAR SI ES ASCII
     public void seEliminaElementoASCIITest(SingleLinkedListImpl<Object> miLista) throws EmptyCollectionException {
@@ -57,6 +55,6 @@ class ProbarRemoveLastTest {
     @Test
     public void noSeEliminaElementoFinalInexistenteTest() throws EmptyCollectionException {
         SingleLinkedListImpl<Object> miListaVacia = new SingleLinkedListImpl<>();
-        Assertions.assertThrows(com.cajanegra.EmptyCollectionException.class, () -> miListaVacia.removeLast());
+        Assertions.assertThrows(com.cajanegra.EmptyCollectionException.class, miListaVacia::removeLast);
     }
 }

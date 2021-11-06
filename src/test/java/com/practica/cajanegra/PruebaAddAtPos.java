@@ -6,11 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AddAtPosTestEquivalencia {
 
@@ -18,7 +14,7 @@ class AddAtPosTestEquivalencia {
 
     @BeforeEach
     void setUp() {
-        myList = new SingleLinkedListImpl<>();
+        myList = new SingleLinkedListImpl<>(123, "Hola");
     }
 
     @DisplayName("Insertar en posición válida")
@@ -36,7 +32,7 @@ class AddAtPosTestEquivalencia {
     @DisplayName("Insertar elemento ínválido inferior")
     @Test
     public void elemInvalidoInferiorTest() {
-         myList.addAtPos("?", 6);
+        myList.addAtPos("?", 6);
     }
 
     @DisplayName("Insertar elemento ínválido inferior en pos inválida")
@@ -59,25 +55,26 @@ class AddAtPosTestEquivalencia {
 
     @DisplayName("Test parameterizados clases equivalencia")
     @ParameterizedTest
-    @CsvSource(value = {"A:5","C:-1","?:6", ">:-2","^:3","]:-6"}, delimiter = ':')
+    @CsvSource(value = {"A:5", "C:-1", "?:6", ">:-2", "^:3", "]:-6"}, delimiter = ':')
     public void elementoTest(Object element, int p) {
         myList.addAtPos(element, p);
+        System.out.println(myList);
     }
 
 }
 
-class AddAtPosValorLimite{
+class AddAtPosValorLimite {
 
     SingleLinkedListImpl<Object> myList;
 
     @BeforeEach
     void setUp() {
-        myList = new SingleLinkedListImpl<>();
+        myList = new SingleLinkedListImpl<>(123, "Hola");
     }
 
     @DisplayName("Test parameterizados valor límite")
     @ParameterizedTest
-    @CsvSource(value = {"@:3","A:4","B:5", "L:6","Y:7","Z:8","[:9","C:0","D:1","E:2"}, delimiter = ':')
+    @CsvSource(value = {"@:3", "A:4", "B:5", "L:6", "Y:7", "Z:8", "[:9", "C:0", "D:1", "E:2"}, delimiter = ':')
     public void elementoTest(Object element, int p) {
         myList.addAtPos(element, p);
     }

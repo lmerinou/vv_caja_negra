@@ -1,6 +1,7 @@
 package com.practica.cajanegra;
 
 import com.cajanegra.SingleLinkedListImpl;
+import junit.framework.AssertionFailedError;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -59,16 +60,16 @@ class AddAtPosTestEquivalencia {
 
     }
 
-    @DisplayName("Insertar elemento ínválido superior en pos inválida")
+    @DisplayName("Insertar elemento en pos inválida superior")
     @Test
-    public void elemInvalidoSuperiorPosInvalidaTest() {
-        Assertions.assertThrows(IllegalArgumentException.class, () -> myList.addAtPos("]", -6));
+    public void elemPosInvalidaTest() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> myList.addAtPos("E", 1000000));
 
     }
 
     @DisplayName("Test parameterizados clases equivalencia")
     @ParameterizedTest
-    @CsvSource(value = {"C:-1", "?:6", ">:-2", "^:3", "]:-6"}, delimiter = ':')
+    @CsvSource(value = {"C:-1", "?:6", ">:-2", "^:3", "]:-6","E:1000000","<:1000000","|:1000000"}, delimiter = ':')
     public void elementoTest(Object element, int p) {
         Assertions.assertThrows(IllegalArgumentException.class, () -> myList.addAtPos(element, p));
     }
@@ -86,13 +87,13 @@ class AddAtPosValorLimite {
         elemLista = myList.iterator();
     }
 
-    @DisplayName("Insertar elemento inválido")
+    @DisplayName("Insertar elemento inválido inferior")
     @Test
     public void elemInvalidoMenos() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> myList.addAtPos("@", 3));
 
     }
-    @DisplayName("Insertar elemento inválido")
+    @DisplayName("Insertar elemento inválido superior")
     @Test
     public void elemInvalidoMas() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> myList.addAtPos("[", 9));
@@ -102,7 +103,7 @@ class AddAtPosValorLimite {
 
     @DisplayName("Test parameterizados valor límite")
     @ParameterizedTest
-    @CsvSource(value = {"A:4", "B:5", "L:6", "Y:7", "Z:8", "C:0", "D:1", "E:2"}, delimiter = ':')
+    @CsvSource(value = {"A:4", "B:5", "L:6", "Y:7", "Z:8", "C:0", "D:1", "E:1000000"}, delimiter = ':')
     public void elementoTest(Object element, int p) {
         myList.addAtPos(element,p);
         if(p < myList.size()){

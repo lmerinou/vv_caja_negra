@@ -18,6 +18,7 @@ class AddAtPosTestEquivalencia {
     Iterator<Object> elemLista;
 
 
+
     @BeforeEach
     void setUp() {
         myList = new SingleLinkedListImpl<>(123, "Hola");
@@ -104,7 +105,7 @@ class AddAtPosValorLimite {
     @CsvSource(value = {"A:4", "B:5", "L:6", "Y:7", "Z:8", "C:0", "D:1", "E:2"}, delimiter = ':')
     public void elementoTest(Object element, int p) {
         myList.addAtPos(element,p);
-        if(p< myList.size()){
+        if(p < myList.size()){
             Assertions.assertEquals(myList.getAtPos(p),element);
         }
         else{

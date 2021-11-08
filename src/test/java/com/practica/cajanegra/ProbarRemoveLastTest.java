@@ -16,7 +16,6 @@ class ProbarRemoveLastTest {
     SingleLinkedListImpl<Object> myList;
     String validElement = "^[A-Z]+$";
 
-
     @BeforeEach
     void setUp() {
         myList = new SingleLinkedListImpl<>();

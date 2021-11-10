@@ -49,25 +49,51 @@ class PruebaAddNTimesTest {
 
     @DisplayName("Se introducen elementos válidos con N inválida")
     @Test
-    public void elemInvalidoIntroducidoConNInvalida() {
+    public void elemValidoIntroducidoConNInvalidaTest() {
         Assertions.assertThrows(RuntimeException.class, () -> myList.addNTimes("A", -1));
+    }
+    @DisplayName("Se introducen elementos válidos con N > 1000000")
+    @Test
+    public void elemValidoIntroducidoConNMayorMillonTest() {
+        myList.addNTimes("A", 1000001);
+        Assertions.assertThrows(StackOverflowError.class, () -> myList.addNTimes("A", 1000001));
     }
 
     @DisplayName("Se introducen elementos inválidos < A con N válida")
     @Test
-    public void elemInvalidoMenorconNValida() {
+    public void elemInvalidoMenorconNValidaTest() {
         Assertions.assertThrows(RuntimeException.class, () -> myList.addNTimes("[", 5));
+    }
+
+    @DisplayName("Se introducen elementos inválidos < A con N inválida")
+    @Test
+    public void elemInvalidoMenorconNInvalidaTest() {
+        Assertions.assertThrows(RuntimeException.class, () -> myList.addNTimes("[", -1));
+    }
+
+    @DisplayName("Se introducen elementos inválidos < A con N > 1000000")
+    @Test
+    public void elemInvalidoMenorconNMayorMillonTest() {
+        myList.addNTimes("A", 1000001);
+        Assertions.assertThrows(StackOverflowError.class, () -> myList.addNTimes("[", 1000001));
     }
 
     @DisplayName("Se introducen elementos inválidos > Z con N válida")
     @Test
-    public void elemInvalidoMenorConNValida() {
+    public void elemInvalidoMenorConNValidaTest() {
         Assertions.assertThrows(RuntimeException.class, () -> myList.addNTimes("?", 5));
     }
 
     @DisplayName("Se introducen elementos inválidos > Z con N inválida")
     @Test
-    public void elemInvalidoMayorConNInvalida() {
+    public void elemInvalidoMayorConNInvalidaTest() {
         Assertions.assertThrows(RuntimeException.class, () -> myList.addNTimes("?", -1));
+    }
+
+    @DisplayName("Se introducen elementos inválidos > Z con N > 1000000")
+    @Test
+    public void elemInvalidoMayorConNMayorMillonTest() {
+        myList.addNTimes("?", 1000001);
+        Assertions.assertThrows(StackOverflowError.class, () -> myList.addNTimes("?", 1000001));
     }
 }

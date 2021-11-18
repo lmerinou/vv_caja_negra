@@ -1,6 +1,7 @@
 package com.practica.cajanegra;
 
 import com.cajanegra.SingleLinkedListImpl;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ class PruebaIsSubListEquivalencia {
     @Test
     public void posInvalidaTest() {
         SingleLinkedListImpl<Object> subList = new SingleLinkedListImpl<>('B',8,'A',6,'X');
-        myList.isSubList(subList);
+        Assertions.assertTrue(myList.isSubList(subList)>=-1);
     }
 }
 

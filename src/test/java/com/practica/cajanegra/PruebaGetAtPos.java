@@ -43,31 +43,33 @@ class GetAtPosValorLimite {
 
     @DisplayName("Get en posición inválida inferior")
     @Test
-    public void posInvalidaTest() { myList.getAtPos(0); }
+    public void posInvalidaTest() { Assertions.assertThrows(IllegalArgumentException.class,
+            () -> {myList.getAtPos(0);} ) ; }
 
     @DisplayName("Get en posición válida límite inferior")
     @Test
-    public void posLimInfTest() { myList.getAtPos(1); }
+    public void posLimInfTest() { Assertions.assertEquals("Hola",myList.getAtPos(1)); }
 
     @DisplayName("Get en posición válida superior")
     @Test
-    public void posValidaSupTest() { myList.getAtPos(2); }
+    public void posValidaSupTest() { Assertions.assertEquals(123,myList.getAtPos(2)); }
 
     @DisplayName("Get en posición válida nominal")
     @Test
-    public void posValidaNominalTest() { myList.getAtPos(5); }
+    public void posValidaNominalTest() { Assertions.assertEquals('P',myList.getAtPos(5)); }
 
     @DisplayName("Get en posición válida inferior")
     @Test
-    public void posValidaInfTest() { myList.getAtPos(7); }
+    public void posValidaInfTest() { Assertions.assertEquals('#',myList.getAtPos(7)); }
 
     @DisplayName("Get en posición válida límite superior")
     @Test
-    public void posLimSupTest() { myList.getAtPos(8); }
+    public void posLimSupTest() {Assertions.assertEquals("Adios",myList.getAtPos(8)); }
 
     @DisplayName("Get en posición inválida superior")
     @Test
-    public void posInvalidaSupTest() { myList.getAtPos(9); }
+    public void posInvalidaSupTest() { Assertions.assertThrows(IllegalArgumentException.class,
+            () -> {myList.getAtPos(9);} ) ; }
 
 
 }

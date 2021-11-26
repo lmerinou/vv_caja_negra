@@ -21,34 +21,20 @@ class ProbarRemoveLastTest {
     void setUp() {
         myList = new SingleLinkedListImpl<>();
     }
-    //METODO PARA COMPROBAR SI ES ASCII
-    public void seEliminaElementoASCIITest(SingleLinkedListImpl<Object> miLista) throws EmptyCollectionException {
-        Object a = miLista.getAtPos(3);
-        Assertions.assertTrue(miLista.removeLast().toString().matches(validElement));
-        miLista.addLast(a);
-        System.out.println(miLista);
-    }
-    @DisplayName("Se elimina elemento correcto final")
+
+    @DisplayName("SE ELIMINA EL ÚLTIMO ELEMENTO CON VALORES < 122000")
     @Test
     public void seEliminaElementoFinalTest() throws EmptyCollectionException {
-        SingleLinkedListImpl<Object> miListaLlena2 = new SingleLinkedListImpl<>("A", "BB", "L");
-        seEliminaElementoASCIITest(miListaLlena2);
-        Assertions.assertEquals("L", miListaLlena2.removeLast());
+        SingleLinkedListImpl<Object> miListaLlena1 = new SingleLinkedListImpl<>("A", "A", "A");
+        miListaLlena1.removeLast();
+        Assertions.assertEquals(2, miListaLlena1.size());
     }
-    @DisplayName("Se elimina elemento final menor que A")
+    @DisplayName("NO SE ELIMINA ÚLTIMO ELEMENTO MAYOR 1000000")
     @Test
-    public void seEliminaElementoFinalMenorTest() throws EmptyCollectionException {
-        SingleLinkedListImpl<Object> miListaLlena3 = new SingleLinkedListImpl<>("A", "BB", "]");
-        seEliminaElementoASCIITest(miListaLlena3);
-        Assertions.assertEquals("]", miListaLlena3.removeLast());
-    }
-
-    @DisplayName("Se elimina elemento final mayor que Z")
-    @Test
-    public void seEliminaElementoFinalMayorTest() throws EmptyCollectionException {
-        SingleLinkedListImpl<Object> miListaLlena4 = new SingleLinkedListImpl<>("A", "BB", "?");
-        seEliminaElementoASCIITest(miListaLlena4);
-        Assertions.assertEquals("]", miListaLlena4.removeLast());
+    public void noSeEliminaElementoFinalGrandeTest() throws EmptyCollectionException {
+        SingleLinkedListImpl<Object> miListaLlena2 = new SingleLinkedListImpl<>();
+        miListaLlena2.addNTimes("A", 1000001);
+        Assertions.assertEquals(1000000, miListaLlena2.size());
     }
 
     @DisplayName("No se elimina elemento final en lista vacía")

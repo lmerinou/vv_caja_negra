@@ -2,6 +2,7 @@ package com.practica.cajanegra;
 
 import com.cajanegra.SingleLinkedListImpl;
 
+
 public class ProbarGetAtPos {
     public static void main(String[] args){
         SingleLinkedListImpl<Object> miLista = new SingleLinkedListImpl<>(new SingleLinkedListImpl<>(3,4),"Hola",999,'R','#',55,"Adios");

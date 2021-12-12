@@ -75,7 +75,7 @@ class ProbarMetodosAux {
  			Assertions.assertEquals(4, listaLlena2.size());
  		}
  		@Test
- 		public void excepcionListaLlena() throws EmptyCollectionException{
+ 		public void excepcionListaVacia() throws EmptyCollectionException{
  			Assertions.assertThrows(com.cajanegra.EmptyCollectionException.class, myList::size);
  		}
 	}
